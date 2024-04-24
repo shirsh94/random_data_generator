@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
@@ -331,9 +330,7 @@ class RandomData {
 
   static String generateInvoiceNumber() {
     final random = Random();
-    return "INV" +
-        DateTime.now().year.toString() +
-        random.nextInt(9999).toString().padLeft(4, '0');
+    return "INV${DateTime.now().year}${random.nextInt(9999).toString().padLeft(4, '0')}";
   }
 
   static String generatePhoneNumberVerificationCode() {
@@ -343,92 +340,69 @@ class RandomData {
 
   static String generateDocumentNumber() {
     final random = Random();
-    return "DOC" +
-        DateTime.now().year.toString() +
-        random.nextInt(9999).toString().padLeft(4, '0');
+    return "DOC${DateTime.now().year}${random.nextInt(9999).toString().padLeft(4, '0')}";
   }
 
   static String generateTrackingNumber() {
     const chars =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     final random = Random();
-    return "TRK" +
-        DateTime.now().year.toString() +
-        String.fromCharCodes(Iterable.generate(
-            8, (_) => chars.codeUnitAt(random.nextInt(chars.length))));
+    return "TRK${DateTime.now().year}${String.fromCharCodes(Iterable.generate(8, (_) => chars.codeUnitAt(random.nextInt(chars.length))))}";
   }
 
   static String generateEmployeeId() {
     final random = Random();
-    return "EMP" +
-        DateTime.now().year.toString() +
-        random.nextInt(9999).toString().padLeft(4, '0');
+    return "EMP${DateTime.now().year}${random.nextInt(9999).toString().padLeft(4, '0')}";
   }
 
   static String generateOrderNumber() {
     final random = Random();
-    return "ORD" +
-        DateTime.now().year.toString() +
-        random.nextInt(9999).toString().padLeft(4, '0');
+    return "ORD${DateTime.now().year}${random.nextInt(9999).toString().padLeft(4, '0')}";
   }
 
   static String generateAccountNumber() {
     final random = Random();
-    return "ACC" +
-        DateTime.now().year.toString() +
-        random.nextInt(9999).toString().padLeft(4, '0');
+    return "ACC${DateTime.now().year}${random.nextInt(9999).toString().padLeft(4, '0')}";
   }
 
   static String generateTransactionId() {
     final random = Random();
-    return "TXN" +
-        DateTime.now().year.toString() +
-        random.nextInt(9999).toString().padLeft(4, '0');
+    return "TXN${DateTime.now().year}${random.nextInt(9999).toString().padLeft(4, '0')}";
   }
 
   static String generateCouponCode() {
     const chars =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     final random = Random();
-    return "COUPON" +
-        String.fromCharCodes(Iterable.generate(
-            6, (_) => chars.codeUnitAt(random.nextInt(chars.length))));
+    return "COUPON${String.fromCharCodes(Iterable.generate(6, (_) => chars.codeUnitAt(random.nextInt(chars.length))))}";
   }
 
   static String generateVoucherCode() {
     const chars =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     final random = Random();
-    return "VOUCHER" +
-        String.fromCharCodes(Iterable.generate(
-            8, (_) => chars.codeUnitAt(random.nextInt(chars.length))));
+    return "VOUCHER${String.fromCharCodes(Iterable.generate(8, (_) => chars.codeUnitAt(random.nextInt(chars.length))))}";
   }
 
   static String generateDiscountCode() {
     const chars =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     final random = Random();
-    return "DISCOUNT" +
-        String.fromCharCodes(Iterable.generate(
-            6, (_) => chars.codeUnitAt(random.nextInt(chars.length))));
+    return "DISCOUNT${String.fromCharCodes(Iterable.generate(6, (_) => chars.codeUnitAt(random.nextInt(chars.length))))}";
   }
 
   static String generatePromoCode() {
     const chars =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     final random = Random();
-    return "PROMO" +
-        String.fromCharCodes(Iterable.generate(
-            6, (_) => chars.codeUnitAt(random.nextInt(chars.length))));
+    return "PROMO${String.fromCharCodes(Iterable.generate(6, (_) => chars.codeUnitAt(random.nextInt(chars.length))))}";
   }
 
   static String generateReferralCode() {
     const chars =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     final random = Random();
-    return "REF" +
-        String.fromCharCodes(Iterable.generate(
-            8, (_) => chars.codeUnitAt(random.nextInt(chars.length))));
+    return "REF${String.fromCharCodes(Iterable.generate(8, (_) => chars.codeUnitAt(random.nextInt(chars.length))))}";
   }
 
   static String generateVerificationCode() {
@@ -440,18 +414,14 @@ class RandomData {
     const chars =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     final random = Random();
-    return "TRACK" +
-        String.fromCharCodes(Iterable.generate(
-            8, (_) => chars.codeUnitAt(random.nextInt(chars.length))));
+    return "TRACK${String.fromCharCodes(Iterable.generate(8, (_) => chars.codeUnitAt(random.nextInt(chars.length))))}";
   }
 
   static String generateAuthCode() {
     const chars =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     final random = Random();
-    return "AUTH" +
-        String.fromCharCodes(Iterable.generate(
-            6, (_) => chars.codeUnitAt(random.nextInt(chars.length))));
+    return "AUTH${String.fromCharCodes(Iterable.generate(6, (_) => chars.codeUnitAt(random.nextInt(chars.length))))}";
   }
 
   static String generatePinCode() {
@@ -579,7 +549,7 @@ class RandomData {
     bytes[6] = (bytes[6] & 0x0F) | 0x40; // Version 4
     bytes[8] = (bytes[8] & 0x3F) | 0x80; // Variant 1
 
-    final hexDigits = '0123456789abcdef';
+    const hexDigits = '0123456789abcdef';
     final uuid = StringBuffer();
     for (int i = 0; i < 16; i++) {
       uuid.write(hexDigits[(bytes[i] & 0xF0) >> 4]);

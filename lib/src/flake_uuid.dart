@@ -1,5 +1,4 @@
 class FlakeUuid {
-  static const int _timestampBits = 41;
   static const int _workerIdBits = 10;
   static const int _sequenceBits = 12;
 
@@ -39,8 +38,8 @@ class FlakeUuid {
     _lastTimestamp = timestamp;
 
     return ((timestamp << _timestampShift) & ((1 << 64) - 1)) |
-    ((workerId << _workerIdShift) & ((1 << 64) - 1)) |
-    (_sequence & _maxSequence);
+        ((workerId << _workerIdShift) & ((1 << 64) - 1)) |
+        (_sequence & _maxSequence);
   }
 
   int _currentMillis() {

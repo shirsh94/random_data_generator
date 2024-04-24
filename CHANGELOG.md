@@ -1,4 +1,4 @@
-## Version 1.0.0
+## Version 0.0.1
 - Added functions for generating various types of random data:
     - Integers, doubles, and characters
     - Quotes and language names

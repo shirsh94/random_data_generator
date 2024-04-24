@@ -10,17 +10,14 @@ class XidGenerator {
   static const int _machineMax = (1 << _machineBits) - 1;
   static const int _processMax = (1 << _processBits) - 1;
 
-  static const int _machineShift = _counterBits;
-  static const int _processShift = _machineBits + _machineShift;
-  static const int _timestampShift = _processBits + _processShift;
-
   int _lastTimestamp = -1;
   int _counter = 0;
 
   String generate() {
     int timestamp = _currentMillis();
     if (timestamp < _lastTimestamp) {
-      throw StateError('Clock is moving backwards. Rejecting requests until $_lastTimestamp.');
+      throw StateError(
+          'Clock is moving backwards. Rejecting requests until $_lastTimestamp.');
     }
 
     if (timestamp == _lastTimestamp) {
@@ -71,6 +68,8 @@ class XidGenerator {
     idBytes[10] = (_counter >> 8) & 0xFF;
     idBytes[11] = _counter & 0xFF;
 
-    return Uint8List.fromList(idBytes).map((byte) => byte.toRadixString(16).padLeft(2, '0')).join();
+    return Uint8List.fromList(idBytes)
+        .map((byte) => byte.toRadixString(16).padLeft(2, '0'))
+        .join();
   }
 }

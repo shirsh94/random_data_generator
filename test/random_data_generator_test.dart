@@ -14,29 +14,4 @@ void main() {
     expect(email.split('@')[0].length, greaterThanOrEqualTo(1));
     expect(email.split('@')[1].length, greaterThanOrEqualTo(1));
   });
-
-  group('RandomData', () {
-    test('generateChecksumId generates correct checksum', () {
-      // Arrange
-      final id = 'test';
-      final expectedChecksum = id.codeUnits.fold(0, (a, b) => a + b) % 256;
-
-      // Act
-      final result = RandomData.generateChecksumId(id);
-
-      // Assert
-      expect(result.endsWith('-$expectedChecksum'), isTrue);
-    });
-
-    test('generateChecksumId handles empty input', () {
-      // Arrange
-      final id = '';
-
-      // Act
-      final result = RandomData.generateChecksumId(id);
-
-      // Assert
-      expect(result, equals('-0'));
-    });
-  });
 }

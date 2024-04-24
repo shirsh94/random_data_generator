@@ -1,8 +1,11 @@
 # Random Data Generator
 
-A Flutter package designed to simplify the generation of random data, codes, and identifiers for various use cases. 
+The `random_data_generator` package designed to simplify the generation of random data, codes, and identifiers for various use cases. 
 This package provides a wide range of functions to generate random integers, doubles, alphabets, colors, email addresses, passwords, animal names, company names, and more. 
 It also includes functions to generate unique identifiers such as UUIDs, ULIDs, Snowflake IDs, and Hash-Based IDs.
+
+[![pub package](https://img.shields.io/pub/v/random_data_generator.svg)](https://pub.dev/packages/random_data_generator)
+
 
 ## Installation
 
