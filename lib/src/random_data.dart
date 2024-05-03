@@ -1,7 +1,9 @@
 import 'dart:math';
 import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:random_data_generator/src/raw_data.dart';
+
 import 'flake_uuid.dart';
 import 'xid.dart';
 
@@ -781,5 +783,17 @@ class RandomData {
 
     // Convert the bytes to a hexadecimal string
     return bytes.map((byte) => byte.toRadixString(16).padLeft(2, '0')).join('');
+  }
+
+  static DateTime getRandomDateTime({DateTime? startDate, DateTime? endDate}) {
+    final random = Random();
+    final min = startDate ?? DateTime(1970);
+    final max = endDate ?? DateTime.now();
+
+    assert(max.millisecondsSinceEpoch > min.millisecondsSinceEpoch);
+
+    final differenceInDays = max.difference(min).inDays;
+    final randomDays = random.nextInt(differenceInDays + 1);
+    return min.add(Duration(days: randomDays));
   }
 }
