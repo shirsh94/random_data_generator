@@ -13,7 +13,7 @@ Add the following dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  random_data_generator: ^0.0.1
+  random_data_generator: ^0.0.2
 ```
 
 Then, run `flutter pub get` to install the package.
@@ -21,6 +21,7 @@ Then, run `flutter pub get` to install the package.
 ## Features
 
 - **Random Number Generation:** Generate random integers and doubles within specified ranges.
+- **Random Date Time:** 20+ methods to generate random dates and times in different formats.
 - **Random Character Generation:** Generate random lowercase and uppercase alphabet characters.
 - **Quote Generation:** Get random quotes from a list of famous quotes.
 - **Language Name Generation:** Get random language names from a list of common languages.

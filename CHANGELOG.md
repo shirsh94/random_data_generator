@@ -1,3 +1,6 @@
+## Version 0.0.2
+- Added 20+ new methods to generate random dates and times in different formats.
+  
 ## Version 0.0.1
 - Added functions for generating various types of random data:
     - Integers, doubles, and characters

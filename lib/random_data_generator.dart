@@ -6,8 +6,9 @@ export 'src/random_data.dart';
 class TestRandomData {
   String randomEmail = RandomData.generateRandomEmail();
   String randomNanoId = RandomData.generateNanoId();
-  String ULID = RandomData.generateUlid();
-  String UDID = RandomData.generateUDID();
+  String randomDate = RandomData.getRandomDate_dd_MM_yyyy();
+  String uLID = RandomData.generateUlid();
+  String uDID = RandomData.generateUDID();
   String quote = RandomData.quote();
   String ancientAnimalName = RandomData.generateAncientAnimalName();
   String randomAnimalName = RandomData.generateRandomAnimalName();

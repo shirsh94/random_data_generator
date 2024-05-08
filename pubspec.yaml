@@ -1,6 +1,6 @@
 name: random_data_generator
 description: "This library Provides a comprehensive set of functions for generating various types of random data, codes, and identifiers, suitable for Flutter app development."
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/shirsh94/random_data_generator
 
 environment:

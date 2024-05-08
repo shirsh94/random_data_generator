@@ -782,4 +782,376 @@ class RandomData {
     // Convert the bytes to a hexadecimal string
     return bytes.map((byte) => byte.toRadixString(16).padLeft(2, '0')).join('');
   }
+
+  static DateTime randomDateInRange(DateTime start, DateTime end) {
+    final random = Random();
+    final range = end.difference(start).inDays;
+    return start.add(Duration(days: random.nextInt(range)));
+  }
+
+  static DateTime randomDateInPast() {
+    final random = Random();
+    final days = random.nextInt(365 * 100); // 100 years
+    return DateTime.now().subtract(Duration(days: days));
+  }
+
+  static DateTime randomDateInFuture() {
+    final random = Random();
+    final days = random.nextInt(365 * 100); // 100 years
+    return DateTime.now().add(Duration(days: days));
+  }
+
+  static DateTime randomDateTime() {
+    final random = Random();
+    final days = random.nextInt(365 * 100); // 100 years
+    final randomDuration = Duration(
+        days: days,
+        hours: random.nextInt(24),
+        minutes: random.nextInt(60),
+        seconds: random.nextInt(60));
+    return DateTime.now().subtract(randomDuration);
+  }
+
+  static String formatDate(DateTime date, String format) {
+    return '${date.year.toString().padLeft(4, '0')}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+  }
+
+  static String formatTimeOfDay(TimeOfDay time) {
+    return '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
+  }
+
+  static String randomDateInRangeFormatted(
+      DateTime start, DateTime end, String format) {
+    final randomDate = randomDateInRange(start, end);
+    return formatDate(randomDate, format);
+  }
+
+  static String randomDateInPastFormatted(String format) {
+    final randomDate = randomDateInPast();
+    return formatDate(randomDate, format);
+  }
+
+  static String randomDateInFutureFormatted(String format) {
+    final randomDate = randomDateInFuture();
+    return formatDate(randomDate, format);
+  }
+
+  static String randomDateTimeFormatted(String format) {
+    final randomDateTimeValue = randomDateTime();
+    return '${formatDate(randomDateTimeValue, format)} ${formatTimeOfDay(TimeOfDay(hour: randomDateTimeValue.hour, minute: randomDateTimeValue.minute))}';
+  }
+
+  static String randomDateInRangeAsString(DateTime start, DateTime end) {
+    final randomDate = Random().nextInt(end.difference(start).inDays);
+    return start.add(Duration(days: randomDate)).toString();
+  }
+
+  static String randomDateInPastAsString() {
+    final randomDays = Random().nextInt(365 * 100); // 100 years
+    final pastDate = DateTime.now().subtract(Duration(days: randomDays));
+    return pastDate.toString();
+  }
+
+  static String randomDateInFutureAsString() {
+    final randomDays = Random().nextInt(365 * 100); // 100 years
+    final futureDate = DateTime.now().add(Duration(days: randomDays));
+    return futureDate.toString();
+  }
+
+  static String randomTimeOfDayAsString() {
+    final randomTime =
+        TimeOfDay(hour: Random().nextInt(24), minute: Random().nextInt(60));
+    return randomTime.toString();
+  }
+
+  static String randomDateTimeAsString() {
+    final randomDays = Random().nextInt(365 * 100); // 100 years
+    final randomTime =
+        TimeOfDay(hour: Random().nextInt(24), minute: Random().nextInt(60));
+    final randomDateTime = DateTime.now().subtract(Duration(
+        days: randomDays, hours: randomTime.hour, minutes: randomTime.minute));
+    return randomDateTime.toString();
+  }
+
+  static String randomDateInRangeFormattedAsString(
+      DateTime start, DateTime end, String format) {
+    final randomDate = Random().nextInt(end.difference(start).inDays);
+    final formattedDate = start.add(Duration(days: randomDate)).toString();
+    return formatDateTimeString(formattedDate, format);
+  }
+
+  static String randomDateInPastFormattedAsString(String format) {
+    final randomDays = Random().nextInt(365 * 100); // 100 years
+    final pastDate = DateTime.now().subtract(Duration(days: randomDays));
+    return formatDateTimeString(pastDate.toString(), format);
+  }
+
+  static String randomDateInFutureFormattedAsString(String format) {
+    final randomDays = Random().nextInt(365 * 100); // 100 years
+    final futureDate = DateTime.now().add(Duration(days: randomDays));
+    return formatDateTimeString(futureDate.toString(), format);
+  }
+
+  static String randomTimeOfDayFormattedAsString(String format) {
+    final randomTime =
+        TimeOfDay(hour: Random().nextInt(24), minute: Random().nextInt(60));
+    return formatDateTimeString(randomTime.toString(), format);
+  }
+
+  static String randomDateTimeFormattedAsString(String format) {
+    final randomDays = Random().nextInt(365 * 100); // 100 years
+    final randomTime =
+        TimeOfDay(hour: Random().nextInt(24), minute: Random().nextInt(60));
+    final randomDateTime = DateTime.now().subtract(Duration(
+        days: randomDays, hours: randomTime.hour, minutes: randomTime.minute));
+    return formatDateTimeString(randomDateTime.toString(), format);
+  }
+
+  static String formatDateTimeString(String dateTimeString, String format) {
+    final dateTime = DateTime.parse(dateTimeString);
+    return '${dateTime.year.toString().padLeft(4, '0')}-${dateTime.month.toString().padLeft(2, '0')}-${dateTime.day.toString().padLeft(2, '0')} ${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')}:${dateTime.second.toString().padLeft(2, '0')}';
+  }
+
+  static String getRandomDateTime_yyyy_MM_dd() {
+    return _formatDateTime(_getRandomDateTime(), 'yyyy-MM-dd');
+  }
+
+  static String getRandomDateTime_yyyy_slash_MM_slash_dd() {
+    return _formatDateTime(_getRandomDateTime(), 'yyyy/MM/dd');
+  }
+
+  static String getRandomDateTime_MM_slash_dd_slash_yyyy() {
+    return _formatDateTime(_getRandomDateTime(), 'MM/dd/yyyy');
+  }
+
+  static String getRandomDateTime_yyyyMMdd() {
+    return _formatDateTime(_getRandomDateTime(), 'yyyyMMdd');
+  }
+
+  static String getRandomDateTime_HH_colon_mm_colon_ss() {
+    return _formatDateTime(_getRandomDateTime(), 'HH:mm:ss');
+  }
+
+  static String getRandomDateTime_hh_colon_mm_colon_ss_a() {
+    return _formatDateTime(_getRandomDateTime(), 'hh:mm:ss a');
+  }
+
+  static String getRandomDateTime_yyyy_MM_dd_HH_colon_mm_colon_ss() {
+    return _formatDateTime(_getRandomDateTime(), 'yyyy-MM-dd HH:mm:ss');
+  }
+
+  static String
+      getRandomDateTime_yyyy_slash_MM_slash_dd_HH_colon_mm_colon_ss() {
+    return _formatDateTime(_getRandomDateTime(), 'yyyy/MM/dd HH:mm:ss');
+  }
+
+  static String
+      getRandomDateTime_MM_slash_dd_slash_yyyy_HH_colon_mm_colon_ss() {
+    return _formatDateTime(_getRandomDateTime(), 'MM/dd/yyyy HH:mm:ss');
+  }
+
+  static String getRandomDateTime_yyyyMMddHHmmss() {
+    return _formatDateTime(_getRandomDateTime(), 'yyyyMMddHHmmss');
+  }
+
+  static String getRandomDateTime_yyMMddHHmmss() {
+    return _formatDateTime(_getRandomDateTime(), 'yyMMddHHmmss');
+  }
+
+  static String getRandomDateTime_yyyy_MM_dd_hh_colon_mm_colon_ss_a() {
+    return _formatDateTime(_getRandomDateTime(), 'yyyy-MM-dd hh:mm:ss a');
+  }
+
+  static String
+      getRandomDateTime_yyyy_slash_MM_slash_dd_hh_colon_mm_colon_ss_a() {
+    return _formatDateTime(_getRandomDateTime(), 'yyyy/MM/dd hh:mm:ss a');
+  }
+
+  static String
+      getRandomDateTime_MM_slash_dd_slash_yyyy_hh_colon_mm_colon_ss_a() {
+    return _formatDateTime(_getRandomDateTime(), 'MM/dd/yyyy hh:mm:ss a');
+  }
+
+  static String getRandomDateTime_MMddyyyy() {
+    return _formatDateTime(_getRandomDateTime(), 'MMddyyyy');
+  }
+
+  static String getRandomDateTime_dd_MM_yyyy() {
+    return _formatDateTime(_getRandomDateTime(), 'dd-MM-yyyy');
+  }
+
+  static String getRandomDateTime_HHmmss() {
+    return _formatDateTime(_getRandomDateTime(), 'HHmmss');
+  }
+
+  static String getRandomDateTime_HH_colon_mm_colon_ss_dot_SSS() {
+    return _formatDateTime(_getRandomDateTime(), 'HH:mm:ss.SSS');
+  }
+
+  static String getRandomDateTime_HH_colon_mm_colon_ss_dot_SSS_Z() {
+    return _formatDateTime(_getRandomDateTime(), 'HH:mm:ss.SSSZ');
+  }
+
+  static String getRandomDateTime_yyyy_MM_ddTHH_colon_mm_colon_ss() {
+    return _formatDateTime(_getRandomDateTime(), 'yyyy-MM-ddTHH:mm:ss');
+  }
+
+  static DateTime _getRandomDateTime() {
+    final random = Random();
+    return DateTime(
+      random.nextInt(3000),
+      // Year
+      random.nextInt(12) + 1,
+      // Month (1-12)
+      random.nextInt(28) + 1,
+      // Day (1-28)
+      random.nextInt(24),
+      // Hour (0-23)
+      random.nextInt(60),
+      // Minute (0-59)
+      random.nextInt(60),
+      // Second (0-59)
+      random.nextInt(1000), // Millisecond (0-999)
+    );
+  }
+
+  static String _formatDateTime(DateTime dateTime, String format) {
+    return format
+        .replaceAll('yyyy', dateTime.year.toString().padLeft(4, '0'))
+        .replaceAll('yy', dateTime.year.toString().substring(2).padLeft(2, '0'))
+        .replaceAll('MM', dateTime.month.toString().padLeft(2, '0'))
+        .replaceAll('dd', dateTime.day.toString().padLeft(2, '0'))
+        .replaceAll('HH', dateTime.hour.toString().padLeft(2, '0'))
+        .replaceAll(
+            'hh',
+            (dateTime.hour > 12 ? dateTime.hour - 12 : dateTime.hour)
+                .toString()
+                .padLeft(2, '0'))
+        .replaceAll('mm', dateTime.minute.toString().padLeft(2, '0'))
+        .replaceAll('ss', dateTime.second.toString().padLeft(2, '0'))
+        .replaceAll('SSS', dateTime.millisecond.toString().padLeft(3, '0'))
+        .replaceAll('a', dateTime.hour < 12 ? 'AM' : 'PM');
+  }
+
+  static String getRandomDate_yyyy_MM_dd() {
+    return _formatDate(_getRandomDate(), 'yyyy-MM-dd');
+  }
+
+  static String getRandomDate_yyyy_slash_MM_slash_dd() {
+    return _formatDate(_getRandomDate(), 'yyyy/MM/dd');
+  }
+
+  static String getRandomDate_MM_slash_dd_slash_yyyy() {
+    return _formatDate(_getRandomDate(), 'MM/dd/yyyy');
+  }
+
+  static String getRandomDate_yyyyMMdd() {
+    return _formatDate(_getRandomDate(), 'yyyyMMdd');
+  }
+
+  static String getRandomDate_MMddyyyy() {
+    return _formatDate(_getRandomDate(), 'MMddyyyy');
+  }
+
+  static String getRandomDate_dd_MM_yyyy() {
+    return _formatDate(_getRandomDate(), 'dd-MM-yyyy');
+  }
+
+  static String getRandomDate_yyMMdd() {
+    return _formatDate(_getRandomDate(), 'yyMMdd');
+  }
+
+  static String getRandomDate_yyyy_MM_ddTHH_colon_mm_colon_ss() {
+    return _formatDate(_getRandomDate(), 'yyyy-MM-ddTHH:mm:ss');
+  }
+
+  static String getRandomDate_yyyy_MM_ddTHHmmss() {
+    return _formatDate(_getRandomDate(), 'yyyy-MM-ddTHHmmss');
+  }
+
+  static String getRandomDate_yyyy_MM_dd_hh_colon_mm_colon_ss_a() {
+    return _formatDate(_getRandomDate(), 'yyyy-MM-dd hh:mm:ss a');
+  }
+
+  static String getRandomTime_HH_colon_mm_colon_ss() {
+    return _formatTime(_getRandomTime(), 'HH:mm:ss');
+  }
+
+  static String getRandomTime_hh_colon_mm_colon_ss_a() {
+    return _formatTime(_getRandomTime(), 'hh:mm:ss a');
+  }
+
+  static String getRandomTime_HHmmss() {
+    return _formatTime(_getRandomTime(), 'HHmmss');
+  }
+
+  static String getRandomTime_HH_colon_mm_colon_ss_dot_SSS() {
+    return _formatTime(_getRandomTime(), 'HH:mm:ss.SSS');
+  }
+
+  static String getRandomTime_HH_colon_mm_colon_ss_dot_SSS_Z() {
+    return _formatTime(_getRandomTime(), 'HH:mm:ss.SSSZ');
+  }
+
+  static String getRandomTime_yyyy_MM_ddTHH_colon_mm_colon_ss() {
+    return _formatTime(_getRandomTime(), 'yyyy-MM-ddTHH:mm:ss');
+  }
+
+  static String getRandomTime_yyyy_MM_ddTHHmmss() {
+    return _formatTime(_getRandomTime(), 'yyyy-MM-ddTHHmmss');
+  }
+
+  static String getRandomTime_yyyy_MM_dd_hh_colon_mm_colon_ss_a() {
+    return _formatTime(_getRandomTime(), 'yyyy-MM-dd hh:mm:ss a');
+  }
+
+  static DateTime _getRandomDate() {
+    final random = Random();
+    return DateTime(
+      random.nextInt(3000), // Year
+      random.nextInt(12) + 1, // Month (1-12)
+      random.nextInt(28) + 1, // Day (1-28)
+    );
+  }
+
+  static DateTime _getRandomTime() {
+    final random = Random();
+    return DateTime(
+      0,
+      // Year
+      0,
+      // Month
+      0,
+      // Day
+      random.nextInt(24),
+      // Hour (0-23)
+      random.nextInt(60),
+      // Minute (0-59)
+      random.nextInt(60),
+      // Second (0-59)
+      random.nextInt(1000), // Millisecond (0-999)
+    );
+  }
+
+  static String _formatDate(DateTime date, String format) {
+    return format
+        .replaceAll('yyyy', date.year.toString().padLeft(4, '0'))
+        .replaceAll('yy', date.year.toString().substring(2).padLeft(2, '0'))
+        .replaceAll('MM', date.month.toString().padLeft(2, '0'))
+        .replaceAll('dd', date.day.toString().padLeft(2, '0'));
+  }
+
+  static String _formatTime(DateTime time, String format) {
+    return format
+        .replaceAll('HH', time.hour.toString().padLeft(2, '0'))
+        .replaceAll(
+            'hh',
+            (time.hour > 12 ? time.hour - 12 : time.hour)
+                .toString()
+                .padLeft(2, '0'))
+        .replaceAll('mm', time.minute.toString().padLeft(2, '0'))
+        .replaceAll('ss', time.second.toString().padLeft(2, '0'))
+        .replaceAll('SSS', time.millisecond.toString().padLeft(3, '0'))
+        .replaceAll('a', time.hour < 12 ? 'AM' : 'PM');
+  }
 }
